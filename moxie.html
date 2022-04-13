@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button id="but">test</button>
+</body>
+<script>
+let but = document.getElementById('but')
+async function async1() {
+    console.log('async1 start');
+    await async2();
+    console.log('async1 end');
+}
+async function async2() {
+    console.log('async2');
+    // 注意：这里如果返回 Promise 的话执行顺序就不一样了
+}
+console.log('script start');
+setTimeout(function() {
+    console.log('setTimeout');
+}, 0)
+async1();
+new Promise(function(resolve) {
+    console.log('promise1');
+    resolve();
+}).then(function() {
+    console.log('promise2');
+});
+console.log('script end');
+
+// but.addEventListener('click',debounce(submit,1000,'qx'),false)
+// function throttle(fn,timer,info){
+//     let task = null
+//     return function (){
+//         if(!task){
+//             task = setTimeout(()=>{
+//                 task = null
+//                 fn.apply(this,[info])
+//             },1000)
+//         }
+//     }
+// }
+//
+// // let logInfo = function (info){
+// //     console.log(info)
+// // }
+//
+// let throttleTest = throttle(info =>{
+//     console.log(info);
+// },1000,'qx')
+
+
+
+
+// 第一次点击直接生效
+// function debounce(fn,timer,info){
+//     let tasking = null
+//     return function (){
+//         let firstClick = !tasking
+//         if(tasking){clearTimeout(tasking)}
+//         if(firstClick){
+//             fn.apply(this,[info])
+//         }
+//         tasking = setTimeout(()=>{
+//             tasking = null
+//         },timer)
+//     }
+// }
+//
+// let submitTest  = debounce(info=>{
+//     console.log(info);
+// },1000,[1,2,3])
+// but.addEventListener('click',submitTest,false)
+//普通的
+// function debounce(fn,timer){
+//     let tasking = null
+//     return function (){
+//         if(tasking){clearTimeout(tasking)}
+//         tasking = setTimeout(()=>{
+//             fn.apply(this,arguments)
+//         },timer)
+//     }
+// }
+
+
+// function debounce(fn,timer,logo){
+//     let task = null
+//     return function (){
+//         if(task){clearTimeout(task)}
+//         let click = !task
+//         if(click){fn.apply(this,[logo])}
+//         task = setTimeout(() =>{
+//             task = null
+//         },timer)
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

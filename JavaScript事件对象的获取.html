@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text">
+    <button id="but">test</button>
+</body>
+<script>
+    let but = document.getElementById('but')
+    but.addEventListener('click',testEvent)
+
+    function testEvent(e,a){
+        console.log(e)//第一个参数一直都是事件参数
+        console.log(a)
+        console.log(arguments)
+        let event = window.event||arguments[0]
+        console.log(event);
+        console.log(event.target)
+        let value = event.target.value
+        console.log(value);
+    }
+</script>
+</html>
