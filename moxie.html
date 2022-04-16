@@ -8,28 +8,28 @@
     <button id="but">test</button>
 </body>
 <script>
-let but = document.getElementById('but')
-async function async1() {
-    console.log('async1 start');
-    await async2();
-    console.log('async1 end');
-}
-async function async2() {
-    console.log('async2');
-    // 注意：这里如果返回 Promise 的话执行顺序就不一样了
-}
-console.log('script start');
-setTimeout(function() {
-    console.log('setTimeout');
-}, 0)
-async1();
-new Promise(function(resolve) {
-    console.log('promise1');
-    resolve();
-}).then(function() {
-    console.log('promise2');
-});
-console.log('script end');
+// let but = document.getElementById('but')
+// async function async1() {
+//     console.log('async1 start');
+//     await async2();
+//     console.log('async1 end');
+// }
+// async function async2() {
+//     console.log('async2');
+//     // 注意：这里如果返回 Promise 的话执行顺序就不一样了
+// }
+// console.log('script start');
+// setTimeout(function() {
+//     console.log('setTimeout');
+// }, 0)
+// async1();
+// new Promise(function(resolve) {
+//     console.log('promise1');
+//     resolve();
+// }).then(function() {
+//     console.log('promise2');
+// });
+// console.log('script end');
 
 // but.addEventListener('click',debounce(submit,1000,'qx'),false)
 // function throttle(fn,timer,info){
@@ -97,9 +97,6 @@ console.log('script end');
 //         },timer)
 //     }
 // }
-
-
-
 
 
 

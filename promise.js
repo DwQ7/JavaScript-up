@@ -99,6 +99,7 @@ class myPromise{
         if(this.state === 'rejected'){
             onRejected(this.reason)
         }
+        //异步
         if(this.state === 'pending'){
             this.successResolve.push(()=>{
                 onFulfilled(this.value)

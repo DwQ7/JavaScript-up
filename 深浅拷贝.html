@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    let person = {
+        name:'qx',
+        age:19,
+        sex:'male',
+        test:1,
+        arr:[1,2,3],
+    }
+
+    //浅拷贝
+    function clone(target) {
+        let cloneTarget = {};
+        for (const key in target) {
+            cloneTarget[key] = target[key];
+        }
+        return cloneTarget;
+    }
+
+    let personCLone = clone(person)
+
+    console.log(personCLone);
+
+    personCLone.test = 2
+    personCLone.arr = [3,2,1]
+
+    console.log(personCLone);
+    console.log(person);
+
+
+</script>
+</body>
+</html>

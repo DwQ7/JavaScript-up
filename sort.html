@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arr = [5,2,1,8,7,3,9,6]
+    console.log(arr);
+
+    function merge(left,right){
+        let i = 0
+        let j = 0
+        let res = []
+        while(i<left.length&&j<right.length){
+            if(left[i] < right[j]){
+                res.push(left[i])
+                i++
+            }else{
+                res.push(right[j])
+                j++
+            }
+        }
+        if(i < left.length){
+            res.push(...left.slice(i))
+        }else{
+            res.push(...right.slice(j))
+        }
+        return res
+    }
+    function merge_sort(arr){
+        if(arr.length < 2){
+            return arr
+        }
+        const mid = Math.floor(arr.length/2)
+        const left = merge_sort(arr.slice(0,mid))
+        const right = merge_sort(arr.slice(mid))
+        return merge(left, right)
+    }
+    console.log(merge_sort(arr));
+
+    // function quick_sort(arr){
+    //     if(arr.length < 2){
+    //         return arr;
+    //     }
+    //     const cur = arr[arr.length - 1]
+    //
+    //     const left = arr.filter((item,index)=>{
+    //         return item<cur&&index!==arr.length-1
+    //     })
+    //     let right = arr.filter((item)=>{
+    //         return item > cur
+    //     })
+    //
+    //     return [...quick_sort(left),cur,...quick_sort(right)]
+    //
+    // }
+    //
+    // console.log(quick_sort(arr));
+
+
+    //快排
+    // let quickSort = function (arr){
+    //     if(arr.length <=1)
+    //         return arr
+    //     let left = []
+    //     let right = []
+    //     let currentValue = arr.splice(0,1)
+    //
+    //     arr.forEach((item) =>{
+    //         if(item<currentValue){
+    //             left.push(item)
+    //         }else{
+    //             right.push(item)
+    //         }
+    //     })
+    //     return quickSort(left).concat(currentValue,quickSort(right))
+    // }
+
+    // function quickSort1(arr,left,right) {
+    //     let l = left
+    //     let r = right
+    //     let key = arr[left]
+    //     if(left >= right){
+    //         return;
+    //     }
+    //     while(l<r) {
+    //         while (arr[r] > key && l < r) {
+    //             r--
+    //         }
+    //         while (arr[l] <= key && l < r) {
+    //             l++
+    //         }
+    //         if(l<r){
+    //             [arr[l], arr[r]] = [arr[r], arr[l]]
+    //         }
+    //
+    //     }
+    //     arr[left] = arr[l]
+    //     arr[l] = key
+    //     quickSort1(arr,left,l-1)
+    //     quickSort1(arr,l+1,right)
+    // }
+    // quickSort1(arr,0,arr.length-1)
+    // console.log(arr);
+    // console.log(quickSort(arr));
+    // //插排
+    // let insertSort = function (arr) {
+    //     let l = arr.length
+    //     for(let i = 1; i < l ; i++){
+    //         for(let j = i; j > 0; j--){
+    //             if(arr[j] < arr[j - 1]){
+    //                 [arr[j],arr[j - 1]] = [arr[j - 1],arr[j]]
+    //             }else{
+    //                 break
+    //             }
+    //         }
+    //     }
+    //     return arr
+    // }
+
+
+    // console.log(insertSort(arr));
+</script>
+</body>
+</html>

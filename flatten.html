@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // function flatten(arr){
+    //     let tArr = []
+    //     arr.map((item)=>{
+    //         if(Array.isArray(item)){
+    //             tArr = tArr.concat(flatten(item))
+    //         }else{
+    //             tArr.push(item)
+    //         }
+    //     })
+    //     return tArr
+    // }
+
+    // function flatten(arr){
+    //     return arr.join(',').split(',').map((item)=>{
+    //         return Number(item)
+    //     })
+    // }
+
+    function flatten(arr){
+        let tArr = []
+        arr.map((item)=>{
+            if(Array.isArray(item)){
+                tArr.push(...item)
+            }else{
+                tArr.push(item)
+            }
+        })
+        return tArr
+    }
+
+let rest = [[123],[1,2,3],[6,7]]
+    console.log(flatten(rest));
+
+
+
+    const obj1 = {
+        name: 'joy',
+        getName() {
+            console.log(this);
+            console.log(this.name);
+        }
+    };
+
+    const obj2 = {
+        name: 'sam'
+    };
+
+    obj1.getName.call(obj2); //obj2 sam
+    obj1.getName.apply(obj2); //obj2 sam
+    const fn = obj1.getName.bind(obj2);
+    fn();//obj2 sam
+
+
+</script>
+</html>

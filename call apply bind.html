@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    Function.prototype.myCall= function(context,...args){
+        context = context || window
+        const fn = Symbol()
+        context[fn] = this
+        let result = context[fn](...args)
+        delete context[fn]
+        return result
+    }
+
+
+
+    Function.prototype.myApply = function (context,args){
+        context = context || window
+        let fn = Symbol()
+        context[fn] = this
+        let result = context[fn](args)
+        delete context[fn]
+        return result
+
+    }
+
+
+
+
+    Function.prototype.myBind =function (context,...args){
+        context = context || window
+        let fn = Symbol()
+        context[fn] = this
+        return function (...newArgs){
+            let result = context[fn](...newArgs,...args)
+            delete context[fn]
+            return result
+        }
+    }
+
+    Promise.prototype.myAll = function (){
+
+
+
+
+    }
+
+    let obj1 = {
+        name: "xiaohei",
+        age: 18,
+        getName: function () {
+            console.log(this.name);
+        }
+    }
+
+    let obj2 = {
+        name: "xiaobai"
+    }
+
+    let asdasd =  obj1.getName.myBind(obj2); //  'xiaobai'
+
+    asdasd()
+
+</script>
+</html>

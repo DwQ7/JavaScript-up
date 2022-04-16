@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    function myInstance(left,right){
+        while(true){
+            if(left === null)
+                return false
+            if(left.__proto__ === right.prototype)
+                return true
+            left = left.__proto__
+        }
+    }
+
+
+
+
+</script>
+</html>

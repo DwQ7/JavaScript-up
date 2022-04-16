@@ -7,32 +7,68 @@
 <body>
 <input type="text" id="value">
 <input type="submit" id="debounceSubmit" >
+<ul id="ul">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
 </body>
 <script>
-let submit = document.getElementById('debounceSubmit')
-submit.addEventListener("click", debounce(sub,1000,true), false)
+// let submit = document.getElementById('debounceSubmit')
+// submit.addEventListener("click", debounce(sub,1000), false)
+let ul = document.getElementById('ul')
+ul.addEventListener('click',debounce(clickUl,1000,true))
 
-function sub(e){
-    console.log(1);
+function clickUl(e){
+    console.log(e);
+    let event = window.event
+    console.log(event);
+    let target = event.target
+    console.log(target.innerText)
 }
-//防抖
-function debounce(fn,timer,triggerNow) {
-    console.log(1)
-    let t = null //只会执行一次
+
+function debounce(fn,timer,isNow){
+    let task = null
     return function (){
-        if(t){
-            clearTimeout(t)
-        }
-        else{
-            t = setTimeout(()=>{
-                console.log(this)  //window
-                console.log(arguments[0]) //undefined
-                fn.apply(this,arguments)    //在这个回调函数里面的argument是这个回调函数的参数，因为没有参数所以undefined，可以通过外面的函数赋值来进行访问
-                //也可以改变成箭头函数,箭头函数的this是指向定义函数的那一层的，所以访问到的arguments是上一层函数的arguments
+        if(task){clearTimeout(task)}
+        if(isNow){
+            let click = !task
+            if(click){fn.apply(this)}
+            task = setTimeout(()=>{
+                task = null
+            },timer)
+        }else{
+            task = setTimeout(()=>{
+                fn.apply(this,arguments)
             },timer)
         }
+
     }
 }
+
+
+
+
+
+//防抖
+// function debounce(fn,timer,triggerNow) {
+//     console.log(1)
+//     let t = null //只会执行一次
+//     return function (){
+//         if(t){
+//             clearTimeout(t)
+//         }
+//         else{
+//             t = setTimeout(()=>{
+//                 console.log(this)  //window
+//                 console.log(arguments[0]) //undefined
+//                 fn.apply(this,arguments)    //在这个回调函数里面的argument是这个回调函数的参数，因为没有参数所以undefined，可以通过外面的函数赋值来进行访问
+//                 //也可以改变成箭头函数,箭头函数的this是指向定义函数的那一层的，所以访问到的arguments是上一层函数的arguments
+//             },timer)
+//         }
+//     }
+// }
 
 // let submit = document.getElementById('debounceSubmit')
 // submit.addEventListener("click", debounce(sub,1000,true), false)

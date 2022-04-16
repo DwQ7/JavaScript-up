@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    function mySetInterVal(fn,t){
+        let timer = null
+        function interval(){
+            fn()
+            timer = setTimeout(interval,t)
+        }
+        interval()
+        return{
+            cancel:() =>{
+                clearTimeout(timer)
+            }
+        }
+    }
+
+    function cosl(){
+        console.log(123);
+    }
+
+    let inter = mySetInterVal(cosl,1000)
+    setTimeout(()=>{
+        inter.cancel()
+    },3000)
+
+
+</script>
+</html>

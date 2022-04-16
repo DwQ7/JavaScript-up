@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    class cacheLRU{
+
+        constructor(capacity) {
+            this.keys = new Map()
+            this.capacity = capacity
+        }
+
+        get(key){
+            if(this.keys.has(key)){
+                let value = this.keys.get(key)
+                this.keys.delete(key)
+                this.keys.set(key,value)
+                return value
+            }else{
+                return -1
+            }
+        }
+
+        put(key,value){
+            if(this.keys.has(key)){
+                this.keys.delete(key)
+                this.keys.set(key,value)
+            }else if(this.keys.size < this.capacity){
+                this.keys.set(key,value)
+            }else{
+                this.keys.set(key,value)
+                this.keys.delete(this.keys.keys().next().value)
+            }
+        }
+    }
+
+
+    console.log([7, 8, 9].keys().next());
+</script>
+</html>

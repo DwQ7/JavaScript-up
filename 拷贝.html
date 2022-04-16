@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+  let arr = [1,2,3]
+
+  let obj = {
+    name:'qx',
+    age:19,
+    sex:'male'
+  }
+
+  let aa = []
+
+  for(let key in obj){
+    aa.push(key)
+  }
+  console.log(aa);
+
+
+  function clone(target){
+    if(typeof target === "object"){
+      let cloneTarget = Array.isArray(target)?[]:{}
+      for(let key in target){
+          cloneTarget[key] = target[key]
+      }
+      return cloneTarget
+    }else{
+        return target
+    }
+
+  }
+
+    let dad = {
+
+    }
+    dad = clone(obj)
+    dad.name = 'qq'
+  console.log(obj);
+  console.log(dad);
+
+
+</script>
+</html>

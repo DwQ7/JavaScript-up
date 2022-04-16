@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    function Errb(age){
+        this.age = age
+        this.name = 'qqq'
+        this.say = function (){
+            console.log('hi');
+        }
+    }
+
+    Errb.prototype.hi = function (){
+
+        console.log('heelo');
+
+    }
+
+    function child(age){
+        Errb.call(this,age)
+        this.name='child'
+    }
+
+    child.prototype = Object.create(Errb.prototype)
+    child.prototype.constructor = child
+
+    let bb = new child(11)
+    console.log(bb);
+
+    bb.hi()
+</script>
+</html>
