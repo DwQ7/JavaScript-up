@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    function myInteraction(arr){
+        let index = 0
+        return
+    }
+    let arrayLike = {
+        0: "Hello",
+        1: "World",
+        length: 2
+    };
+
+    // let arr = Array.from(arrayLike)
+    // arr.push('2')
+    // console.log(arr);
+    // console.log(arr.pop());
+    //
+    // let sr1 = 'asdv'
+    // for(let i of sr1){
+    //     console.log(i);
+    // }
+    //
+    // let n = Array.from(sr1)
+    // let m = sr1.split('')
+    // console.log(n);
+    // console.log(m);
+
+    // function* generator(){
+    //     yield 1
+    //     yield [1,2,3]
+    //     yield (a)=>a*a
+    //     return 'finish'
+    // }
+    //
+    // let test = generator()
+    //
+    // for(let value of test){
+    //     console.log(value);
+    // }
+
+
+
+    // let range = {
+    //     from: 1,
+    //     to: 5,
+    //
+    //     [Symbol.iterator]() {
+    //         return {
+    //             cur:this.from,
+    //             last:this.to,
+    //
+    //             next(){
+    //                 if (this.cur <= this.last) {
+    //                     return { done: false, value: this.cur++ };
+    //                 } else {
+    //                     return { done: true };
+    //                 }
+    //             }
+    //         }
+    //     }
+    // };
+    //
+    // for(let i of range){
+    //     console.log(i);
+    // }
+
+    // function* range(start,end){
+    //     for(let i = start; i <= end; i++){
+    //         yield i
+    //     }
+    // }
+    //
+    // function* passWord(){
+    //     yield* range(48,57)
+    //     yield* range(65,90)
+    // }
+    //
+    // console.log(String.fromCharCode(...passWord()));
+    //
+    //
+    // for(let i of range(1,4)){
+    //     console.log(i);
+    // }
+    // console.log( ...range(1,3) ); // 1,2,3,4,5
+    //
+    //
+    // function* ques(){
+    //     let result = yield '2+2=?'
+    //
+    //     alert(result)
+    // }
+    //
+    // let te = ques()
+    //
+    // let question = te.next().value
+    //
+    // let anwser = prompt(question)
+    //
+    // console.log(anwser)
+    //
+    // te.next(anwser)
+
+
+    // async function* range(start,end){
+    //     for(let i = start; i <= end; i++){
+    //         await new Promise((resolve)=> {setTimeout(()=>{resolve()},1000)})
+    //         yield i
+    //     }
+    // }
+    //
+    // (async ()=>{
+    //    let gen = range(1,5)
+    //    for await (let i of gen ){
+    //        console.log(i);
+    //    }
+    // })()
+
+
+    let range = {
+        from: 1,
+        to: 5,
+
+        async *[Symbol.asyncIterator]() {
+            for(let i = this.from; i <= this.to; i++ ){
+                let res = await new Promise((resolve) =>{setTimeout(()=>{resolve(i*2)},1000)} )
+                yield res
+            }
+        }
+    };
+
+    (async ()=>{
+       for await (let i of range){
+           console.log(i);
+       }
+    })()
+
+</script>
+</html>

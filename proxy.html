@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    let test = {
+        name:'qx',
+        age:'11'
+    }
+
+    // test = new Proxy(test,{
+    //     get(target,prop){
+    //         if (prop in target) {
+    //             return target[prop];
+    //         } else {
+    //             return prop;
+    //         }
+    //     },
+    //     set(target,prop,val){
+    //         if(typeof val === 'string'){
+    //             target[prop] = val
+    //             return true
+    //         }else{
+    //             return false
+    //         }
+    //     }
+    //
+    // })
+    //
+    // test['age'] = '19'
+    // test['sex'] = 'male'
+    // console.log(test.name);
+    // console.log(test.age);
+    // console.log(test.sex);
+    // console.log(JSON.parse(JSON.stringify(test)));
+
+
+    // function wrap(fn,ms){
+    //     return function (){
+    //         setTimeout(()=>{
+    //             fn.apply(this,arguments)
+    //         },ms)
+    //     }
+    // }
+    //
+    // function sayHi(user){
+    //     console.log('hi');
+    //
+    // }
+    //
+    // let test12 = wrap(sayHi,1000)
+    // console.log(test12.length);
+    // test12()
+</script>
+</html>
